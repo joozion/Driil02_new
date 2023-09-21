@@ -2,6 +2,7 @@ Python 3.11.5 (tags/v3.11.5:cce6ba9, Aug 24 2023, 14:38:34) [MSC v.1936 64 bit (
 Type "help", "copyright", "credits" or "license()" for more information.
 
 from pico2d import *
+import math
 
 open_canvas()
 
@@ -10,13 +11,23 @@ character = load_image('character.png')
 
 def run_circle():
     print('CIRCLE')
+
+    
+    cx, cy, r = 400, 300, 200
+    for deg in range(0, 360, 1):
+        x = cx + r * math.cos(math.radians(deg))
+        y = cy + r * math.sin(math.radians(deg))
+        clear_canvas_now()
+        grass.draw_now(400, 30)
+        character.draw_now(x, y)
+        delay(0.01)
     pass
 
 def run_rectangle():
     print('RECTANGLE')
     pass
 
-whild True:
+while True:
     run_circle()
     run_rectangle()
 
